@@ -1,0 +1,88 @@
+const { test } = require("node:test");
+const assert = require("node:assert/strict");
+const { handleAddonsScan } = require("../src/commands/addons-scan");
+const { handleAddonsInspect } = require("../src/commands/addons-inspect");
+const {
+  searchAddonMarketplaceSnapshot,
+  findAddonMarketplaceSnapshotEntry,
+  resetAddonMarketplaceSnapshotCache,
+} = require("../src/lib/addon-snapshot");
+
+const path = require("node:path");
+
+const snapshotManifest = path.join(__dirname, "..", "data", "addon-marketplace-snapshots", "manifest.json");
+
+function captureLogs(run) {
+  const originalLog = console.log;
+  const lines = [];
+  console.log = (...args) => {
+    lines.push(args.join(" "));
+  };
+
+  return Promise.resolve()
+    .then(run)
+    .then(() => lines)
+    .finally(() => {
+      console.log = originalLog;
+    });
+}
+
+test("snapshot search finds relevant addon matches by keywords and description", async () => {
+  resetAddonMarketplaceSnapshotCache();
+  const results = await searchAddonMarketplaceSnapshot("korean discovery", { snapshotManifest });
+  assert.ok(results.addons.length > 0, "expected at least one snapshot hit");
+  assert.equal(results.addons[0].name, "Addon Explorer");
+  assert.equal(results.metadata.snapshotVersion, "2026-05-08");
+});
+
+test("snapshot inspect can find an addon by id", async () => {
+  resetAddonMarketplaceSnapshotCache();
+  const result = await findAddonMarketplaceSnapshotEntry({ id: "wlgg52gjj", snapshotManifest });
+  assert.ok(result.addon, "expected addon to exist in the snapshot");
+  assert.equal(result.addon.name, "Accessibility Assistant");
+  assert.equal(result.metadata.capturedOn, "2026-05-08");
+});
+
+test("addons scan supports the snapshot source without loading the entire dataset into output", async () => {
+  resetAddonMarketplaceSnapshotCache();
+  const lines = await captureLogs(() =>
+    handleAddonsScan([
+      "--source",
+      "snapshot",
+      "--query",
+      "accessibility",
+      "--limit",
+      "3",
+      "--snapshot-manifest",
+      snapshotManifest,
+    ]),
+  );
+
+  const output = lines.join("\n");
+  assert.match(output, /Accessibility Assistant/);
+  assert.match(output, /GitHub-hosted addon catalog dated 2026-05-08/);
+});
+
+test("addons inspect prints a single snapshot record", async () => {
+  resetAddonMarketplaceSnapshotCache();
+  const lines = await captureLogs(() =>
+    handleAddonsInspect(["--id", "wjkl4l48l", "--snapshot-manifest", snapshotManifest]),
+  );
+  const output = lines.join("\n");
+
+  assert.match(output, /Addon Explorer/);
+  assert.match(output, /localized metadata/);
+  assert.match(output, /Snapshot record date: 2026-05-08/);
+});
+
+test("addons inspect validates required args before touching the snapshot source", async () => {
+  resetAddonMarketplaceSnapshotCache();
+  await assert.rejects(
+    () =>
+      handleAddonsInspect([
+        "--snapshot-manifest",
+        "http://127.0.0.1:9/manifest.json",
+      ]),
+    /addons inspect requires --id "<addOnId>" or --name "<addon name>"/,
+  );
+});

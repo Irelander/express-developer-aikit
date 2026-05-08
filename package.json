@@ -1,0 +1,52 @@
+{
+  "name": "express-developer-aikit",
+  "version": "0.1.0",
+  "description": "AI-assisted Adobe Express add-on development toolkit with progressive skills, idea validation, and publish review.",
+  "license": "MIT",
+  "author": "Irelander",
+  "type": "commonjs",
+  "homepage": "https://github.com/irelander/express-developer-aikit#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irelander/express-developer-aikit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/irelander/express-developer-aikit/issues"
+  },
+  "bin": {
+    "express-developer-aikit": "bin/express-developer-aikit.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "skills",
+    "README.md",
+    "README.ko.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node ./bin/express-developer-aikit.js",
+    "check": "node --check ./bin/express-developer-aikit.js && node --check ./src/cli.js && node --check ./src/data/skills.js && node --check ./src/lib/adobe-trending.js && node --check ./src/lib/addon-snapshot.js && node --check ./src/lib/args.js && node --check ./src/lib/frontmatter.js && node --check ./src/lib/fs-utils.js && node --check ./src/lib/output.js && node --check ./src/lib/providers.js && node --check ./src/commands/mcp-init.js && node --check ./src/commands/skills-list.js && node --check ./src/commands/skills-install.js && node --check ./src/commands/addons-scan.js && node --check ./src/commands/addons-inspect.js && node --check ./src/commands/help.js",
+    "test": "node --test tests/*.test.js",
+    "scan:trending": "node ./bin/express-developer-aikit.js addons scan --source trending",
+    "scan:snapshot": "node ./bin/express-developer-aikit.js addons scan --source snapshot --limit 20",
+    "skills:list": "node ./bin/express-developer-aikit.js skills list"
+  },
+  "keywords": [
+    "adobe",
+    "ai",
+    "adobe-express",
+    "agent",
+    "automation",
+    "claude",
+    "cursor",
+    "express-add-ons",
+    "mcp",
+    "cli",
+    "developer-tools",
+    "skills"
+  ]
+}

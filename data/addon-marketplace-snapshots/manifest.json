@@ -1,0 +1,10 @@
+{
+  "repoUrl": "https://github.com/Irelander/express-developer-aikit",
+  "sourceType": "manual-marketplace-snapshot",
+  "latest": {
+    "snapshotVersion": "2026-05-08",
+    "capturedOn": "2026-05-08",
+    "addonCount": 514,
+    "snapshotPath": "./addon-marketplace-snapshot.2026-05-08.json"
+  }
+}
