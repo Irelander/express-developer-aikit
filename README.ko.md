@@ -4,6 +4,10 @@
 
 Adobe Express add-on을 AI 보조 워크플로우로 개발할 때, 공식 MCP만으로는 해결되지 않는 부분을 보완하는 CLI이자 skill kit입니다.
 
+## 개요
+
+![Overview](./docs/assets/images/developer-aikit-overview.png)
+
 ## 왜 만들었나
 
 공식 Adobe Express MCP가 나왔지만, 그것만으로 add-on을 개발하다 보면 몇 가지 페인포인트가 남습니다.

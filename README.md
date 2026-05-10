@@ -4,6 +4,10 @@
 
 A CLI and skill kit that complements Adobe Express's official MCP for AI-assisted add-on development.
 
+## Overview
+
+![Overview](./docs/assets/images/developer-aikit-overview.png)
+
 ## Why this exists
 
 Adobe Express has an official MCP, but using it alone leaves a few real pain points when you're actually shipping add-ons.
