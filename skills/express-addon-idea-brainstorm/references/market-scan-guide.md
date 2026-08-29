@@ -20,8 +20,7 @@
 
 ## Snapshot notes
 
-- The broader marketplace snapshot is currently based on a manually collected addon list served from the public GitHub repo, so use it as a strong overlap signal, not as proof of live completeness.
-- Record the snapshot date/version from the CLI output when you summarize market overlap.
+- The broader marketplace snapshot is a dated public catalog on GitHub, not a live feed. Use it as a strong overlap signal and record the snapshot date/count from the CLI output.
 - Prefer several small searches (`--query accessibility`, `--query contrast`, `--query wcag`) over one broad dump.
 - If one result seems highly relevant, inspect only that record instead of requesting more rows.
 

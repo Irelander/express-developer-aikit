@@ -1,15 +1,7 @@
 const { parseOptions } = require("../lib/args");
 const { fetchTrendingAddons } = require("../lib/adobe-trending");
-const { searchAddonMarketplaceSnapshot } = require("../lib/addon-snapshot");
+const { formatSnapshotStamp, searchAddonMarketplaceSnapshot } = require("../lib/addon-snapshot");
 const { note } = require("../lib/output");
-
-function formatSnapshotStamp(metadata) {
-  if (!metadata.snapshotVersion || metadata.snapshotVersion === metadata.capturedOn) {
-    return `dated ${metadata.capturedOn}`;
-  }
-
-  return `dated ${metadata.capturedOn} (version ${metadata.snapshotVersion})`;
-}
 
 function filterAddons(addons, query) {
   if (!query) {
@@ -84,11 +76,11 @@ async function handleAddonsScan(argv) {
     printTable(limited, source);
 
     if (source === "snapshot") {
-      note(`Snapshot search uses the manually collected GitHub-hosted addon catalog ${formatSnapshotStamp(snapshotSearch.metadata)}.`);
+      note(`Snapshot search uses the GitHub-hosted addon catalog dated ${formatSnapshotStamp(snapshotSearch.metadata)}.`);
       note(`Snapshot source: ${snapshotSearch.metadata.repoUrl}`);
     } else {
       note(
-        "Live trending still comes from Adobe's official surface. Use --source snapshot for the broader manually collected marketplace snapshot.",
+        "Live trending still comes from Adobe's official surface. Use --source snapshot for the broader dated marketplace catalog.",
       );
     }
   }

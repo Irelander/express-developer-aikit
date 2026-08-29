@@ -1,14 +1,6 @@
 const { parseOptions } = require("../lib/args");
-const { findAddonMarketplaceSnapshotEntry } = require("../lib/addon-snapshot");
+const { findAddonMarketplaceSnapshotEntry, formatSnapshotStamp } = require("../lib/addon-snapshot");
 const { note } = require("../lib/output");
-
-function formatSnapshotStamp(metadata) {
-  if (!metadata.snapshotVersion || metadata.snapshotVersion === metadata.capturedOn) {
-    return metadata.capturedOn;
-  }
-
-  return `${metadata.capturedOn} (version ${metadata.snapshotVersion})`;
-}
 
 function printAddon(addon) {
   console.log(`- ${addon.name}`);

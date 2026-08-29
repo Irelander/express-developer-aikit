@@ -169,7 +169,7 @@ async function loadAddonMarketplaceSnapshot(options = {}) {
 
     return {
       metadata: {
-        sourceType: manifest.sourceType || "manual-marketplace-snapshot",
+        sourceType: manifest.sourceType || "marketplace-catalog-snapshot",
         repoUrl: manifest.repoUrl || "https://github.com/Irelander/express-developer-aikit",
         manifestResource,
         snapshotResource,
@@ -246,10 +246,21 @@ function resetAddonMarketplaceSnapshotCache() {
   cachedSnapshotKey = null;
 }
 
+function formatSnapshotStamp(metadata) {
+  const capturedOn = metadata.capturedOn || "unknown date";
+  const versionPart =
+    metadata.snapshotVersion && metadata.snapshotVersion !== metadata.capturedOn
+      ? ` (version ${metadata.snapshotVersion})`
+      : "";
+  const countPart = Number.isFinite(metadata.addonCount) ? `, ${metadata.addonCount} addons` : "";
+  return `${capturedOn}${versionPart}${countPart}`;
+}
+
 module.exports = {
   DEFAULT_SNAPSHOT_MANIFEST_URL,
   loadAddonMarketplaceSnapshot,
   searchAddonMarketplaceSnapshot,
   findAddonMarketplaceSnapshotEntry,
   resetAddonMarketplaceSnapshotCache,
+  formatSnapshotStamp,
 };

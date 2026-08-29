@@ -12,3 +12,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
+# Local marketplace scrape dumps. Dated snapshot JSON + manifest stay tracked.
+data/addon-marketplace-snapshots/new.json
+data/addon-marketplace-snapshots/addon-marketplace-pages.json

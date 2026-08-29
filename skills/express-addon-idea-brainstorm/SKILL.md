@@ -48,7 +48,7 @@ Evaluate a new Adobe Express add-on idea against marketplace overlap, platform c
 ## Common pitfalls
 - Treating a trend page scan as proof that no similar add-ons exist elsewhere.
 - Pulling the full snapshot JSON into prompt context instead of slicing it with targeted search commands.
-- Treating the GitHub-hosted snapshot as live truth when it is currently based on a manually collected addon list.
+- Treating the GitHub-hosted snapshot as live truth. It is a dated catalog — use the date and addon count from the CLI output.
 - Recommending an idea that assumes background jobs, direct file-system access, or sandbox-side browser APIs without checking whether the platform actually allows that.
 - Recommending ideas that require document sandbox behavior but never acknowledging the UI/sandbox split.
 - Turning an MVP into a roadmap dump with login, sync, export, analytics, and admin tooling all at once.
@@ -65,7 +65,7 @@ Evaluate a new Adobe Express add-on idea against marketplace overlap, platform c
 - Toolkit command: "addons inspect --id <addOnId>" or "addons inspect --name <addon name>"
 - Existing implementation skills for panel UI, document sandbox, OAuth, asset flows, and publish review
 - Official Adobe Express trending add-ons page
-- GitHub-hosted marketplace snapshot currently derived from a manually collected addon list and stamped with a snapshot date/version
+- GitHub-hosted marketplace snapshot: dated public catalog (not a live feed), stamped with capture date, version, and addon count
 
 ## Progressive references
 - [Market scan guide](./references/market-scan-guide.md) - How to use scans and local docs before recommending an idea.

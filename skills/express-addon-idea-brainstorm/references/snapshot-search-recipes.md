@@ -8,7 +8,7 @@ Use the GitHub-hosted marketplace snapshot as a **retrieval tool**, not as promp
 - Prefer 1-3 narrow searches with `--limit 5` to `--limit 10`.
 - Search adjacent wording, not just the original phrase.
 - Inspect a single addon record when one result looks close.
-- Remember: the snapshot is currently derived from a manually collected addon list served from the public GitHub repo, so it is broader than trending but not live truth.
+- Remember: the snapshot is a dated public marketplace catalog on GitHub. It is broader than trending but not a live feed.
 - Keep the snapshot date/version from the CLI output in your notes when market timing matters.
 
 ## Recipe 1 — direct use-case overlap

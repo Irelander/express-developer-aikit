@@ -145,7 +145,7 @@ express-developer-aikit addons inspect --id wlgg52gjj
 
 `trending` reads Adobe's official trending page.
 
-`snapshot` uses a broader add-on list — currently collected manually — for overlap analysis. The collection date and version are recorded in the snapshot manifest.
+`snapshot` uses a dated public marketplace catalog (desktop add-on listing) for broader overlap analysis. It is not a live feed — capture date and addon count are in the snapshot manifest and CLI output.
 
 The intended flow is: use `trending` to see what's visibly hot right now, then use `snapshot` to check broader overlap without injecting the full dataset into model context.
 

@@ -145,7 +145,7 @@ express-developer-aikit addons inspect --id wlgg52gjj
 
 `trending`은 Adobe의 공식 trending 페이지를 기준으로 합니다.
 
-`snapshot`은 수동으로 수집한 더 넓은 add-on 목록으로 overlap 분석에 씁니다. 수집 시점의 날짜 / 버전은 snapshot manifest에서 확인할 수 있습니다.
+`snapshot`은 공개 마켓 desktop add-on 목록을 날짜 단위로 떠 둔 카탈로그로 overlap을 봅니다. 라이브 피드가 아니므로 CLI에 나오는 수집일과 개수를 함께 확인하세요.
 
 권장 흐름: 먼저 `trending`으로 지금 눈에 띄는 영역을 보고, 그다음 `snapshot`으로 더 넓은 overlap을 체크합니다. 이렇게 하면 전체 JSON을 모델 컨텍스트에 넣지 않고도 전체 목록을 활용할 수 있습니다.
 

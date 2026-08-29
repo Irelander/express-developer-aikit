@@ -15,7 +15,7 @@ Commands:
   mcp init          Generate Adobe Express MCP config files and snippets.
   skills list       Show built-in skills shipped with the kit.
   skills install    Install built-in skills for a specific client environment.
-  addons scan       Scan official trending data or the manual GitHub snapshot.
+  addons scan       Scan official trending data or the dated GitHub marketplace snapshot.
   addons inspect    Show one add-on from the GitHub-hosted marketplace snapshot.
 
 Examples:
